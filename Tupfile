@@ -1,0 +1,9 @@
+include_rules
+
+ld-y := example
+example.o-y := foo/
+example.o-y += bar/
+example.o-y += whiz.o
+example.o-y += main.o
+
+include &(Kbuild)

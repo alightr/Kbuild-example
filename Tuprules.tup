@@ -1,0 +1,44 @@
+.gitignore
+
+&Kbuild	= Kbuild/Kbuild.lua
+
+CC	= gcc
+LD	= ld
+AR	= ar
+
+#
+# Use $(CC) in place of $(LD) for linking final executable.
+#
+KBUILD_USE_CC_LINK = y
+
+#
+# Uncomment to use thin archives in place of partially linked objects.
+#
+#KBUILD_USE_THIN_LD = y
+
+#
+# If gcc: -Ofast; otherwise, -O2
+#
+ccflags-y += '(@name eq gcc -Ofast -O2)'
+
+#
+# If supported by compiler: -funit-at-a-time
+#
+ccflags-y += '(@test -funit-at-a-time)'
+
+#
+# If supported by compiler: -Wno-trigraphs
+#
+ccflags-y += '(@nowarn trigraphs)'
+
+#
+# If supported by compiler: -Wstrict-prototypes
+#
+ccflags-y += '(@warn strict-prototypes)'
+
+#
+# If supported by compiler: -fdefinitely-doesnt-exist
+#
+ccflags-y += '(@test -fdefinitely-doesnt-exist)'
+
+include Kbuild/Kbuild.tup

@@ -1,0 +1,6 @@
+include_rules
+
+obj-y := foo_1.o
+obj-y += foo_2.o
+
+include &(Kbuild)
